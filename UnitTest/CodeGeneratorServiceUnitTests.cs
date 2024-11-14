@@ -9,12 +9,10 @@ public class CodeGeneratorServiceUnitTests
     private readonly CodeGeneratorService _codeGeneratorService;
     private readonly Mock<IConnectionMultiplexer> _mockConnectionMultiplexer;
     private readonly Mock<IDatabase> _mockRedisDb;
-    private readonly Mock<IBatch> _mockBatch;
 
     public CodeGeneratorServiceUnitTests()
     {
         _mockConnectionMultiplexer = new Mock<IConnectionMultiplexer>();
-        _mockBatch = new Mock<IBatch>();
         _mockRedisDb = new Mock<IDatabase>();
 
         _mockConnectionMultiplexer.Setup(m => m.GetDatabase(It.IsAny<int>(), It.IsAny<object>()))
@@ -62,8 +60,6 @@ public class CodeGeneratorServiceUnitTests
             .InSequence(sequence)
             .Setup(db => db.ScriptEvaluateAsync(It.IsAny<string>(), It.IsAny<RedisKey[]>(), It.IsAny<RedisValue[]>(), It.IsAny<CommandFlags>()))
             .ReturnsAsync(RedisResult.Create(Array.Empty<RedisValue>(), ResultType.Array));
-
-        _mockRedisDb.Setup(r => r.CreateBatch(null)).Returns(_mockBatch.Object);
 
         // Act
         var result = await _codeGeneratorService.GetCodesAsync(length, count);

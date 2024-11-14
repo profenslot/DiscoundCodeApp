@@ -1,8 +1,8 @@
-﻿using DiscoundCodeApp;
+﻿using DiscountCodeApp;
 using Google.Rpc;
 using Grpc.Core;
 using Grpc.Net.Client;
-using static DiscoundCodeApp.DiscountCodeHandler;
+using static DiscountCodeApp.DiscountCodeHandler;
 
 namespace Client;
 

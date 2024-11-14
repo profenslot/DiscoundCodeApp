@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "DiscoundCodeApp";
+option csharp_namespace = "DiscountCodeApp";
 
 package discountcode;
 

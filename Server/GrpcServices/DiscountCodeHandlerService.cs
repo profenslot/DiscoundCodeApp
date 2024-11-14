@@ -1,6 +1,6 @@
 using Common.Services.Interfaces;
 using Common.Validators;
-using DiscoundCodeApp;
+using DiscountCodeApp;
 using Grpc.Core;
 using Server.Services.Interfaces;
 
